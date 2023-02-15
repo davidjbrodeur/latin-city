@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=MedievalSharp&display=swap');
+
+.App {
+  text-align: center;
+}
+
+* {
+  /* outline: 1px solid red;
+  outline-offset: -1px; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Luxurious Roman', cursive;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+  font-family: 'MedievalSharp', cursive;
+}
+
+header {
+  height: 5vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  height: 5vh;
+}
