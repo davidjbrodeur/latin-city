@@ -10,13 +10,13 @@ import 'firebase/compat/firestore';
 import Game from './game/Game.js';
 
 const app = initializeApp({
-  apiKey: "AIzaSyD2gdKVg8G6Lz4sRkhqsB2ByfDNo_tM244",
-  authDomain: "latin-city.firebaseapp.com",
-  projectId: "latin-city",
-  storageBucket: "latin-city.appspot.com",
-  messagingSenderId: "276478527814",
-  appId: "1:276478527814:web:e7d8fc82452d4dfa437d47"
-})
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_APP_ID}`
+});
 
 window.addEventListener('resize', function() {
   document.body.style.height = window.innerHeight + 'px';
