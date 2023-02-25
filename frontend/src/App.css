@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=VT323&display=swap');
+
+:root {
+  --text-font: 'DotGothic16', sans-serif;
+  --title-font: 'VT323', monospace;
+}
 
 .App {
   text-align: center;
@@ -17,7 +22,7 @@ body {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Luxurious Roman', cursive;
+  font-family: var(--text-font);
 }
 
 h1,
@@ -26,7 +31,7 @@ h3,
 h4,
 h5,
 button {
-  font-family: 'MedievalSharp', cursive;
+  font-family: var(--title-font);
 }
 
 header {

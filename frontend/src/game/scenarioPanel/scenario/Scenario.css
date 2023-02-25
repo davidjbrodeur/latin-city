@@ -1,0 +1,36 @@
+.clickable-elements li:hover {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.clickable-elements li {
+    position: relative;
+    padding: 10px;
+}
+
+.clickable-elements li:hover:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    animation: border-fade 0.5s ease-in-out forwards;
+}
+
+@keyframes border-fade {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

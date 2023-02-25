@@ -15,7 +15,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 50vw;
     background-color: #fff;
     border: 2px solid #000;
     padding: 20px;
@@ -50,4 +50,8 @@
 .popup ul {
     display: flex;
     flex-direction: column;
+}
+
+.popup img {
+    width: 15vw;
 }
