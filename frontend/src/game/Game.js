@@ -3,20 +3,98 @@ import ScenarioPanel from "./scenarioPanel/ScenarioPanel";
 import React, { useState } from "react";
 
 function Game(props) {
+  const [cursor, setCursor] = useState(`default`);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [imageFolder, setImageFolder] = useState("ratio_2_for_1");
+  const [gridTemplate, setGridTemplate] = useState({
+    gridColumnTemplate: "16px 8fr 8px",
+    gridRowTemplate: "16px 8fr 16px",
+  });
 
   const handleButtonClick = () => {
     setIsPopupOpen(true);
-    document.getElementById("city-picture").style.display = "none";
   };
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
-    document.getElementById("city-picture").style.display = "block";
+  };
+
+  const handleButton2for1 = () => {
+    setImageFolder("ratio_2_for_1");
+    setGridTemplate({
+      columns: "16px 8fr 8px",
+      rows: "16px 8fr 16px",
+    });
+    setCursor({
+      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
+    });
+    console.log(cursor);
+  };
+
+  const handleButton3for1 = () => {
+    setImageFolder("ratio_3_for_1");
+    setGridTemplate({
+      columns: "24px 8fr 24px",
+      rows: "24px 8fr 24px",
+    });
+    setCursor({
+      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
+    });
+    console.log(cursor);
+  };
+
+  const handleButton4for1 = () => {
+    setImageFolder("ratio_4_for_1");
+    setGridTemplate({
+      columns: "32px 8fr 32px",
+      rows: "32px 8fr 32px",
+    });
+    setCursor({
+      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
+    });
+    console.log(cursor);
+  };
+
+  const gridContainerStyle = {
+    "--grid-template-columns": gridTemplate.columns,
+    "--grid-template-rows": gridTemplate.rows,
+  };
+
+  const cursorStyle = {
+    "--cursor": cursor,
+  };
+
+  const core_background = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_center01_16x16.png)`,
+  };
+
+  const bottom_background = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_down_8x8.png)`,
+  };
+
+  const right_background = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_right_8x8.png)`,
+  };
+
+  const left_background = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_left_8x8.png)`,
+  };
+
+  const top_background = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_top_8x8.png)`,
+  };
+
+  const corner_a_style = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_corner_a_8x8.png)`,
   };
 
   return (
-    <div id="game-section" className="container" hidden={true}>
+    <div
+      id="game-section"
+      className="container"
+      hidden={true}
+      style={{ cursor }}
+    >
       <section id="main-top-bar" className="main-top-bar">
         <div>
           <p className="player-info">{props.data.name}</p>
@@ -122,14 +200,7 @@ function Game(props) {
           </ul>
         </div>
       </section>
-      <section id="main-bottom-bar" className="main-bottom-bar">
-        <div>
-          <div>factions info</div>
-          <div>other faction Npcs</div>
-          <div>regional info</div>
-          <div>ongoing objectives</div>
-        </div>
-      </section>
+      <section id="main-bottom-bar" className="main-bottom-bar"></section>
       <section id="main-left-bar" className="main-left-bar">
         <div>
           <h1>Clients & Patrons</h1>
@@ -168,7 +239,79 @@ function Game(props) {
         </div>
       </section>
       <section id="main-center" className="main-center">
-        <img id="city-picture" src="assets/img/city.png" alt="city" />
+        <h3>Aspect Ratio UI Panel Test (now = `{imageFolder}`)</h3>
+        <div class="grid-container" style={gridContainerStyle}>
+          <div class="corner-a" style={corner_a_style}></div>
+          <div class="top" style={top_background}></div>
+          <div class="corner-b">
+            {" "}
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `assets/${imageFolder}/frame02_corner_b_8x8.png`
+              }
+              alt="Building"
+            />
+          </div>
+          <div class="left" style={left_background}></div>
+          <div class="core" style={core_background}>
+            <div>
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  `assets/${imageFolder}/building01_80x80.png`
+                }
+                alt="Building"
+              />
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  `assets/${imageFolder}/portrait_man01_32x32.png`
+                }
+                alt="Portrait"
+              />
+            </div>
+            <ul>
+              <li>
+                <button onClick={handleButton2for1} id="two-for-one">
+                  2 for 1
+                </button>
+              </li>
+              <li>
+                <button onClick={handleButton3for1} id="three-for-one">
+                  3 for 1
+                </button>
+              </li>
+              <li>
+                <button onClick={handleButton4for1} id="four-for-one">
+                  4 for 1
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="right" style={right_background}></div>
+          <div class="corner-d">
+            {" "}
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `assets/${imageFolder}/frame02_corner_d_8x8.png`
+              }
+              alt="Building"
+            />
+          </div>
+          <div class="bottom" style={bottom_background}></div>
+          <div class="corner-c">
+            {" "}
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `assets/${imageFolder}/frame02_corner_c_8x8.png`
+              }
+              alt="Building"
+            />
+          </div>
+        </div>
         <button onClick={handleButtonClick}>Scenario Panel</button>
         {isPopupOpen && <ScenarioPanel onClose={handleClosePopup} />}
       </section>

@@ -54,4 +54,5 @@ function parseGoogleSheetsData(data) {
   return objects;
 }
 
-main().catch(console.error);
+// main().catch(console.error);
+console.log("commented out for now");

@@ -1,3 +1,8 @@
 # TODO
 
-- Aller refactoriser Event et Game pour remettre la logique de l'event dans un nouveau "EventPanel" qui lui va avoir un bouton "Generate Event" et l'event comme tel. Le Game va juste ouvrir ou fermer le EventPanel
+- Modifier l'adresse du script de build pour les events pour pas rien péter
+- Mettre les img des trois ratios dans le public assets folder
+- Mettre le UI
+- Mettre le curseur
+- Mettre les portraits
+- Faire le script avec les boutons pour changer le aspect ratio manuellement en changeant le path des images

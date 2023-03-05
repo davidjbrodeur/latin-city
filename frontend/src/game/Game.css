@@ -1,3 +1,9 @@
+:root {
+    --grid-template-columns: "16px 8fr 16px";
+    --grid-template-rows: "16px 8fr 16px";
+    --cursor: default;
+}
+
 .container {
     display: grid;
     grid-template-columns: 0.5fr 2.5fr 0.5fr;
@@ -7,6 +13,7 @@
         "main-top-bar main-top-bar main-top-bar"
         "main-left-bar main-center main-right-bar"
         "main-bottom-bar main-bottom-bar main-bottom-bar";
+    cursor: var(--cursor);
 }
 
 .main-top-bar {
@@ -46,14 +53,14 @@
     grid-area: main-center;
 }
 
-.main-center img {
+/* .main-center img {
     max-width: 100%;
     max-height: 60vh;
     border-radius: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 .info-list {
     list-style-type: none;
@@ -80,4 +87,68 @@
 .main-left-bar img {
     max-width: 50%;
     height: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "corner-a top corner-b"
+        "left core right"
+        "corner-d bottom corner-c";
+    grid-template-columns: var(--grid-template-columns);
+    grid-template-rows: var(--grid-template-rows);
+    height: 45vh;
+}
+
+.grid-container>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.corner-a {
+    grid-area: corner-a;
+}
+
+.top {
+    grid-area: top;
+}
+
+.corner-b {
+    grid-area: corner-b;
+}
+
+.right {
+    grid-area: right;
+}
+
+.core {
+    grid-area: core;
+    display: flex;
+    flex-direction: column;
+}
+
+.core ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1vw;
+}
+
+.core button {
+    font-size: 3rem;
+}
+
+.left {
+    grid-area: left;
+}
+
+.corner-d {
+    grid-area: corner-d;
+}
+
+.bottom {
+    grid-area: bottom;
+    background-repeat: repeat-x;
+    background-position: center;
 }
