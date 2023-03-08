@@ -3,7 +3,6 @@ import ScenarioPanel from "./scenarioPanel/ScenarioPanel";
 import React, { useState } from "react";
 
 function Game(props) {
-  const [cursor, setCursor] = useState(`default`);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [imageFolder, setImageFolder] = useState("ratio_2_for_1");
   const [gridTemplate, setGridTemplate] = useState({
@@ -22,37 +21,25 @@ function Game(props) {
   const handleButton2for1 = () => {
     setImageFolder("ratio_2_for_1");
     setGridTemplate({
-      columns: "16px 8fr 8px",
-      rows: "16px 8fr 16px",
+      columns: "32px 8fr 32px",
+      rows: "32px 8fr 32px",
     });
-    setCursor({
-      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
-    });
-    console.log(cursor);
   };
 
   const handleButton3for1 = () => {
     setImageFolder("ratio_3_for_1");
     setGridTemplate({
-      columns: "24px 8fr 24px",
-      rows: "24px 8fr 24px",
+      columns: "48px 8fr 48px",
+      rows: "48px 8fr 48px",
     });
-    setCursor({
-      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
-    });
-    console.log(cursor);
   };
 
   const handleButton4for1 = () => {
     setImageFolder("ratio_4_for_1");
     setGridTemplate({
-      columns: "32px 8fr 32px",
-      rows: "32px 8fr 32px",
+      columns: "64px 8fr 64px",
+      rows: "64px 8fr 64px",
     });
-    setCursor({
-      cursor: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/cursor_hand_16x16.png), auto`,
-    });
-    console.log(cursor);
   };
 
   const gridContainerStyle = {
@@ -60,41 +47,59 @@ function Game(props) {
     "--grid-template-rows": gridTemplate.rows,
   };
 
-  const cursorStyle = {
-    "--cursor": cursor,
-  };
-
   const core_background = {
     backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_center01_16x16.png)`,
   };
 
   const bottom_background = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_down_8x8.png)`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_down_16x16.png)`,
   };
 
   const right_background = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_right_8x8.png)`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_right_16x16.png)`,
   };
 
   const left_background = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_left_8x8.png)`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_left_16x16.png)`,
   };
 
   const top_background = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_top_8x8.png)`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_top_16x16.png)`,
   };
 
   const corner_a_style = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/frame02_corner_a_8x8.png)`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_corner_a_16x16.png)`,
   };
 
+  const corner_b_style = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_corner_b_16x16.png)`,
+  };
+
+  const corner_c_style = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_corner_c_16x16.png)`,
+  };
+
+  const corner_d_style = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/${imageFolder}/mos_frame03_corner_d_16x16.png)`,
+  };
+
+  function clickEffect(e) {
+    var d = document.createElement("div");
+    d.className = "clickEffect";
+    d.style.top = e.clientY + "px";
+    d.style.left = e.clientX + "px";
+    document.body.appendChild(d);
+    d.addEventListener(
+      "animationend",
+      function () {
+        d.parentElement.removeChild(d);
+      }.bind(this)
+    );
+  }
+  document.addEventListener("click", clickEffect);
+
   return (
-    <div
-      id="game-section"
-      className="container"
-      hidden={true}
-      style={{ cursor }}
-    >
+    <div id="game-section" className="container" hidden={true}>
       <section id="main-top-bar" className="main-top-bar">
         <div>
           <p className="player-info">{props.data.name}</p>
@@ -243,16 +248,7 @@ function Game(props) {
         <div class="grid-container" style={gridContainerStyle}>
           <div class="corner-a" style={corner_a_style}></div>
           <div class="top" style={top_background}></div>
-          <div class="corner-b">
-            {" "}
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                `assets/${imageFolder}/frame02_corner_b_8x8.png`
-              }
-              alt="Building"
-            />
-          </div>
+          <div class="corner-b" style={corner_b_style}></div>
           <div class="left" style={left_background}></div>
           <div class="core" style={core_background}>
             <div>
@@ -266,7 +262,7 @@ function Game(props) {
               <img
                 src={
                   process.env.PUBLIC_URL +
-                  `assets/${imageFolder}/portrait_man01_32x32.png`
+                  `assets/${imageFolder}/portrait_man01_40x40.png`
                 }
                 alt="Portrait"
               />
@@ -290,27 +286,9 @@ function Game(props) {
             </ul>
           </div>
           <div class="right" style={right_background}></div>
-          <div class="corner-d">
-            {" "}
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                `assets/${imageFolder}/frame02_corner_d_8x8.png`
-              }
-              alt="Building"
-            />
-          </div>
+          <div class="corner-d" style={corner_d_style}></div>
           <div class="bottom" style={bottom_background}></div>
-          <div class="corner-c">
-            {" "}
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                `assets/${imageFolder}/frame02_corner_c_8x8.png`
-              }
-              alt="Building"
-            />
-          </div>
+          <div class="corner-c" style={corner_c_style}></div>
         </div>
         <button onClick={handleButtonClick}>Scenario Panel</button>
         {isPopupOpen && <ScenarioPanel onClose={handleClosePopup} />}

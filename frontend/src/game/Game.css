@@ -4,6 +4,39 @@
     --cursor: default;
 }
 
+* {
+    cursor: url('./cursor_hand_a_16x16.png'), auto;
+}
+
+div.clickEffect {
+    cursor: url('./cursor_hand_b_16x16.png'), auto;
+    position: fixed;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-radius: 50%;
+    animation: clickEffect 0.4s ease-out;
+    z-index: 99999;
+}
+
+@keyframes clickEffect {
+    0% {
+        opacity: 0;
+        width: 0.5em;
+        height: 0.5em;
+        margin: -0.25em;
+        border-width: 0.5em;
+    }
+
+    100% {
+        opacity: 0.0;
+        width: 15em;
+        height: 15em;
+        margin: -7.5em;
+        border-width: 0.03em;
+    }
+}
+
 .container {
     display: grid;
     grid-template-columns: 0.5fr 2.5fr 0.5fr;
@@ -13,7 +46,6 @@
         "main-top-bar main-top-bar main-top-bar"
         "main-left-bar main-center main-right-bar"
         "main-bottom-bar main-bottom-bar main-bottom-bar";
-    cursor: var(--cursor);
 }
 
 .main-top-bar {
